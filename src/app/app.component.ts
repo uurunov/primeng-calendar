@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-custom';
+  date = new Date();
 
   value: string;
 }
