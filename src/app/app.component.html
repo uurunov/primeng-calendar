@@ -1,1 +1,5 @@
-<p-calendar [(ngModel)]="date"></p-calendar>
+<div [formGroup]="form">
+  <dl-calendar formControlName="date"></dl-calendar>
+  <span *ngIf="form.controls['date'].hasError('required')">field is required</span>
+  {{form.controls['date'].value | date}}
+</div>

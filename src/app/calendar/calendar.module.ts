@@ -4,6 +4,8 @@ import {ButtonModule} from 'primeng/button';
 import {RippleModule} from 'primeng/ripple';
 import {SharedModule} from 'primeng/api';
 import {Calendar} from './calendar.component';
+import {NgxMaskModule} from 'ngx-mask';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 export interface LocaleSettings {
   firstDayOfWeek?: number;
@@ -21,8 +23,8 @@ export interface LocaleSettings {
 
 @NgModule({
   declarations: [Calendar],
-  imports: [CommonModule, ButtonModule, SharedModule, RippleModule],
-  exports: [Calendar, ButtonModule, SharedModule],
+  imports: [CommonModule, ButtonModule, SharedModule, FormsModule, ReactiveFormsModule, RippleModule, NgxMaskModule.forChild()],
+  exports: [Calendar, ButtonModule, SharedModule, NgxMaskModule],
 })
 export class CalendarModule {
 }

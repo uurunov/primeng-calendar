@@ -36,7 +36,7 @@ export const CALENDAR_VALUE_ACCESSOR: any = {
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'p-calendar',
+  selector: 'dl-calendar',
   template: `
     <span
       #container
@@ -53,6 +53,7 @@ export const CALENDAR_VALUE_ACCESSOR: any = {
       <ng-template [ngIf]="!inline">
         <input
           #inputfield
+          mask="00.00.0000"
           type="text"
           [attr.id]="inputId"
           [attr.name]="name"
@@ -532,7 +533,7 @@ export class Calendar implements OnInit, OnDestroy, ControlValueAccessor {
 
   @Input() disabled: any;
 
-  @Input() dateFormat: string;
+  @Input() dateFormat: string = 'dd.mm.yy';
 
   @Input() multipleSeparator: string = ',';
 
@@ -1522,7 +1523,6 @@ export class Calendar implements OnInit, OnDestroy, ControlValueAccessor {
 
   updateModel(value) {
     this.value = value;
-
     if (this.dataType == 'date') {
       this.onModelChange(this.value);
     } else if (this.dataType == 'string') {
@@ -2719,6 +2719,7 @@ export class Calendar implements OnInit, OnDestroy, ControlValueAccessor {
     this.isKeydown = false;
 
     let val = event.target.value;
+    console.log(val);
     try {
       let value = this.parseValueFromString(val);
       if (this.isValidSelection(value)) {
